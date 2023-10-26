@@ -1,6 +1,6 @@
 import Form from "../components/form";
 
-export default function SignUp () {
+export default function SignIn () {
     return (
         <Form ></Form>
     )
