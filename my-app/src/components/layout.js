@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Outlet } from 'react-router-dom'
+import { Outlet ,Link} from 'react-router-dom'
 
 const user = {
   name: 'Tom Cook',
@@ -10,16 +10,16 @@ const user = {
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-  { name: 'Reports', href: '#', current: false },
+  { name: 'Dashboard', href: '/', current: true },
+  { name: 'Team', href: '/team', current: false },
+  { name: 'Projects', href: '/projects', current: false },
+  { name: 'Products', href: '/products', current: false },
+  { name: 'AddProduct', href: '/addProduct', current: false },
 ]
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Your Profile', href: '/profile' },
+  { name: 'Settings', href: '/setting' },
+  { name: 'Sign out', href: '/signout' },
 ]
 
 function classNames(...classes) {
@@ -63,7 +63,22 @@ export default function Layout() {
                       </div>
                     </div>
                   </div>
-                  <div className="hidden md:block">
+                  {/* sigin and singup buttons */}
+                  <div>
+                  <a
+                  href="/signin"
+                  className="inline-block rounded-md border border-transparent bg-blue-600 px-8 py-2 text-center font-medium text-white hover:bg-blue-700"
+                >
+                  Log in
+                </a>
+                  <a
+                  href="/signup"
+                  className="inline-block rounded-md border border-transparent bg-green-600 px-8 py-2 text-center font-medium text-white hover:bg-green-700"
+                >
+                  Sign up
+                </a>
+                  </div>
+                  {/* <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
                       <button
                         type="button"
@@ -72,10 +87,10 @@ export default function Layout() {
                         <span className="absolute -inset-1.5" />
                         <span className="sr-only">View notifications</span>
                         <BellIcon className="h-6 w-6" aria-hidden="true" />
-                      </button>
+                      </button> */}
 
                       {/* Profile dropdown */}
-                      <Menu as="div" className="relative ml-3">
+                      {/* <Menu as="div" className="relative ml-3">
                         <div>
                           <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5" />
@@ -112,7 +127,7 @@ export default function Layout() {
                         </Transition>
                       </Menu>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="-mr-2 flex md:hidden">
                     {/* Mobile menu button */}
                     <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -180,15 +195,6 @@ export default function Layout() {
             </>
           )}
         </Disclosure>
-
-        <header className="bg-white shadow">
-          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
-          </div>
-        </header>
-        <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{/* Your content */}</div>
-        </main>
       </div>
       <Outlet></Outlet>
     </>
